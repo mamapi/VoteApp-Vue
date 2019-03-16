@@ -1,14 +1,19 @@
 import router from './router';
 
 const AuthService = {
-    loggedIn() {
-        return false;
+    getToken() {
+        return window.localStorage.getItem("token");
     },
+
+    isLoggedIn() {
+        const token = this.getToken();
+        return token ? true : false;
+    }
 };
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (AuthService.loggedIn()) {
+        if (AuthService.isLoggedIn()) {
             next();
         } else {
             next({
