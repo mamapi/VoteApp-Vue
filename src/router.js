@@ -19,17 +19,26 @@ export default new Router({
     {
       path: '/vote',
       name: 'vote',
-      component: Vote
+      component: Vote,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/score',
       name: 'score',
-      component: Score
+      component: Score,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/settings',
       name: 'settings',
-      component: Settings
-    }
+      component: Settings,
+      meta: {
+        requiresAuth: true,
+      },
+}
   ]
 })
